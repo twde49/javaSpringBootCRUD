@@ -1,7 +1,7 @@
-package dev.esdlyon.saysalut.Service;
+package dev.esdlyon.mobilePhoneApp.Service;
 
-import dev.esdlyon.saysalut.Entity.MobilePhone;
-import dev.esdlyon.saysalut.Repository.MobilePhoneRepository;
+import dev.esdlyon.mobilePhoneApp.Entity.MobilePhone;
+import dev.esdlyon.mobilePhoneApp.Repository.MobilePhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

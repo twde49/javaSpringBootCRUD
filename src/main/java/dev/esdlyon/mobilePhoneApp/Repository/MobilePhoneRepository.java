@@ -1,6 +1,6 @@
-package dev.esdlyon.saysalut.Repository;
+package dev.esdlyon.mobilePhoneApp.Repository;
 
-import dev.esdlyon.saysalut.Entity.MobilePhone;
+import dev.esdlyon.mobilePhoneApp.Entity.MobilePhone;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

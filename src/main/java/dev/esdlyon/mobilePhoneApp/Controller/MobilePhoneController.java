@@ -1,7 +1,7 @@
-package dev.esdlyon.saysalut.Controller;
+package dev.esdlyon.mobilePhoneApp.Controller;
 
-import dev.esdlyon.saysalut.Entity.MobilePhone;
-import dev.esdlyon.saysalut.Service.MobilePhoneService;
+import dev.esdlyon.mobilePhoneApp.Entity.MobilePhone;
+import dev.esdlyon.mobilePhoneApp.Service.MobilePhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +15,11 @@ public class MobilePhoneController {
     @Autowired
     private MobilePhoneService mobilePhoneService;
 
-    @GetMapping
+    @GetMapping("/index")
     public List<MobilePhone> getAllMobilePhones() {
         return mobilePhoneService.getAllMobilePhones();
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<MobilePhone> getMobilePhoneById(@PathVariable Long id) {
         return mobilePhoneService.getMobilePhoneById(id)
@@ -27,7 +27,7 @@ public class MobilePhoneController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public MobilePhone createMobilePhone(@RequestBody MobilePhone mobilePhone) {
         return mobilePhoneService.createMobilePhone(mobilePhone);
     }

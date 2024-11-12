@@ -1,4 +1,4 @@
-package dev.esdlyon.saysalut;
+package dev.esdlyon.mobilePhoneApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

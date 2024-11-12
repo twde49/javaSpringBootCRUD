@@ -1,0 +1,24 @@
+GET http://localhost:8080/users/me
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aWJvQG1haWwuY29tIiwiaWF0IjoxNzMxNDA1NDk4LCJleHAiOjE3MzE3NjU0OTh9.x9DNT6FOJYwBLbO3PQYpeCUEe0SCxSt3PzpmwLO5AEU
+
+###
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "tibo2@mail.com",
+  "fullName": "tibo tibo",
+  "password": "postgres"
+}
+
+###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "tibo2@mail.com",
+  "password": "postgres"
+}
+
