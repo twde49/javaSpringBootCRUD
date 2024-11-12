@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "users")
 @Entity
@@ -34,6 +35,9 @@ public class User implements UserDetails {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<MobilePhone> mobilePhones;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -71,6 +75,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Set<MobilePhone> getMobilePhones() {
+        return mobilePhones;
+    }
+
+    public void setMobilePhones(Set<MobilePhone> mobilePhones) {
+        this.mobilePhones = mobilePhones;
     }
 
     public Integer getId() {

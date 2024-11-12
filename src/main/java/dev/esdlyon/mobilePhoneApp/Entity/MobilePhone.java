@@ -4,6 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class MobilePhone {
@@ -18,6 +23,17 @@ public class MobilePhone {
     private int storageCapacity;
     private int ram;
     private String color;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @NotNull
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private User createdBy;
+
+    @JsonProperty("createdBy")
+    public String getCreatedById() {
+        return createdBy != null ? createdBy.getUsername() : null;
+    }
 
     public Long getId() {
         return id;
@@ -73,5 +89,13 @@ public class MobilePhone {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 }

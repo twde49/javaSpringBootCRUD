@@ -1,8 +1,10 @@
 package dev.esdlyon.mobilePhoneApp.Service;
 
 import dev.esdlyon.mobilePhoneApp.Entity.MobilePhone;
+import dev.esdlyon.mobilePhoneApp.Entity.User;
 import dev.esdlyon.mobilePhoneApp.Repository.MobilePhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,7 @@ public class MobilePhoneService {
 
     @Autowired
     private MobilePhoneRepository mobilePhoneRepository;
+    private SecurityContextHolder authentication;
 
     public List<MobilePhone> getAllMobilePhones() {
         return mobilePhoneRepository.findAll();
@@ -23,6 +26,8 @@ public class MobilePhoneService {
     }
 
     public MobilePhone createMobilePhone(MobilePhone mobilePhone) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        mobilePhone.setCreatedBy(currentUser);
         return mobilePhoneRepository.save(mobilePhone);
     }
 

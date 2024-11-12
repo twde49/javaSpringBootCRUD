@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: springboot-app
+    depends_on:
+      - db
+    ports:
+      - "8082:80"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/phoneapp
+      SPRING_DATASOURCE_USERNAME: phoneuser
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - app-network
+
+  db:
+    image: postgres:14-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: phoneapp
+      POSTGRES_USER: phoneuser
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  postgres_data:
